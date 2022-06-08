@@ -78,7 +78,7 @@ def get_model_tokenizer(args):
         )
 
     if args.block_size <= 0:
-        args.block_size = tokenizer.max_len
+        args.block_size = tokenizer.model_max_length
         # Our input block size will be the max possible for the model
     else:
         args.block_size = min(args.block_size, tokenizer.max_len)
@@ -187,7 +187,7 @@ def train_epoch(model, tokenizer, optimizer, scheduler, train_dataloader, tr_los
             # save checkpoint
             if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:
                 if args.evaluate_during_training:
-                    save_checkpoint(model, optimizer, scheduler, tokenizer, args)
+                    save_checkpoint(model, optimizer, scheduler, tokenizer, args, global_step)
 
         if args.max_steps > 0 and global_step > args.max_steps:
             epoch_iterator.close()

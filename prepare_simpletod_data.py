@@ -16,7 +16,7 @@ save_dir = './resources/gpt2'
 os.makedirs(save_dir, exist_ok=True)
 
 for split in ['train', 'val', 'test']:
-
+    print(split)
     opt = ArgsParser().parse()
     opt.use_knowledge = True
     opt.use_action = True

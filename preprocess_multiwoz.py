@@ -901,6 +901,7 @@ def main():
     print('Building dictionaries')
     buildDictionaries(word_freqs_usr, word_freqs_sys, word_freqs_history,
                       lexicalize=(str(sys.argv[1])=='lexical'))
+    
 
 
 if __name__ == "__main__":
